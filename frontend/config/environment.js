@@ -17,6 +17,10 @@ module.exports = function(environment) {
       }
     },
 
+    gReCaptcha: {
+      siteKey: '6LefiAMTAAAAALfRhvDLKPiTcwh79OH13khVBAGD'
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created

@@ -1,5 +1,10 @@
 {{#bs-form formLayout=formLayout model=this onSubmit=(action "submit") as |form|}}
   {{form.element controlType="text" placeholder="Username" property="username" required=true}}
   {{form.element controlType="password" placeholder="Password" property="password" required=true}}
-  {{bs-button defaultText="Login" type="primary" buttonType="submit" block=true}}
+
+  {{#form.group}}
+    {{input/google-recaptcha value=recaptcha}}
+  {{/form.group}}
+
+  {{bs-button disabled=disabledBtn defaultText="Login" type="primary" buttonType="submit" block=true}}
 {{/bs-form}}

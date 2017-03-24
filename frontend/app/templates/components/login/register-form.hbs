@@ -2,5 +2,10 @@
   {{form.element controlType="text" placeholder="Username" property="username" required=true}}
   {{form.element controlType="password" placeholder="Password" property="password" required=true}}
   {{form.element controlType="password" placeholder="Confirm Password" property="passwordConfirmation" required=true}}
-  {{bs-button defaultText="Register" type="primary" buttonType="submit" block=true}}
+
+  {{#form.group}}
+    {{input/google-recaptcha value=recaptcha}}
+  {{/form.group}}
+
+  {{bs-button disabled=disabledBtn defaultText="Register" type="primary" buttonType="submit" block=true}}
 {{/bs-form}}
