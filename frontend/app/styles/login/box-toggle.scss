@@ -1,0 +1,14 @@
+.login--box-toggle{
+  width: 25em;
+  display: table;
+  margin: 0 auto;
+
+  .nav-tabs > li{
+    width: 50%;
+    text-align: center;
+  }
+
+  .tab-content{
+    padding-top: 2em;
+  }
+}
