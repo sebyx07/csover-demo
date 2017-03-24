@@ -1,0 +1,39 @@
+backend:
+  build: ./backend
+  command: bash start.sh
+  volumes:
+    - ./backend:/app
+  ports:
+    - "3000"
+  links:
+    - mysql
+
+nginx:
+  build: ./nginx
+  command: nginx -g 'daemon off;'
+  ports:
+    - "3000:80"
+  environment:
+    - NGINX_HOST=127.0.0.1
+    - NGINX_PORT=80
+  links:
+    - backend
+    - frontend
+
+frontend:
+  build: ./frontend
+  entrypoint: []
+  command: ember server
+  volumes:
+    - ./frontend:/myapp
+  ports:
+    - "4200"
+
+mysql:
+  image: mysql:5.7.15
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./db:/var/lib/mysql
+  environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
