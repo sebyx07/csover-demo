@@ -1,0 +1,31 @@
+.support-requests--list-item-customer{
+  .title, .status{
+    display: inline-block;
+  }
+
+  .title{
+    cursor: pointer;
+  }
+
+  .status{
+    float: right;
+  }
+
+  .glyphicon-remove{
+    color: $brand-danger;
+  }
+
+  .glyphicon-ok{
+    color: $brand-success;
+  }
+
+  .content{
+    .message{
+      text-align: justify;
+    }
+
+    .actions{
+      text-align: right;
+    }
+  }
+}

@@ -4,7 +4,7 @@
     <div class="panel-heading">{{list.recordCount}} Support requests</div>
     <div class="panel-body">
       {{#each list.model as |sr|}}
-        {{support-requests/list-item-customer supportRequest=sr}}
+        {{support-requests/list-item-customer list=list supportRequest=sr}}
       {{/each}}
     </div>
   {{/support-requests/list}}

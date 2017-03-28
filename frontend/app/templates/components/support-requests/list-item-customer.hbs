@@ -1,7 +1,24 @@
-{{supportRequest.title}}
+<p class="title" {{action "toggleView"}}>
+  {{supportRequest.title}}
+</p>
 
-{{#if supportRequest.closedAt}}
-  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-{{else}}
-  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+<div class="status">
+  {{#if supportRequest.closedAt}}
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  {{else}}
+    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  {{/if}}
+</div>
+
+{{#if showDetails}}
+  <hr />
+  <div class="content">
+    <div class="message">
+      {{supportRequest.message}}
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn btn-danger" {{action "delete"}}>Delete</button>
+    </div>
+  </div>
 {{/if}}
