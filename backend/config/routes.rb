@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :api do
     namespace :v1 do
-      jsonapi_resources :users
+      jsonapi_resources :users do
+        jsonapi_relationships
+      end
+      jsonapi_resources :support_requests do
+        jsonapi_relationships
+      end
 
       namespace :sessions do
         post 'login', action: 'login'

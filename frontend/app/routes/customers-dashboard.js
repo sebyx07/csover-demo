@@ -7,7 +7,17 @@ export default Ember.Route.extend({
   model(){
     return new Ember.RSVP.Promise((resolve) => {
       this.get('currentUser').getUser().then((user) => {
-        resolve({currentUser: user})
+        const queryOptions = {
+          page: {
+            number: 1
+          },
+          filter: {
+            'user-id': user.get('id')
+          },
+          sort: '-closedAt'
+        };
+
+        resolve({currentUser: user, queryOptions: queryOptions})
       }).catch(() => {
         this.transitionTo('login');
         this.get('toastr').error('You must be logged in as a customer');

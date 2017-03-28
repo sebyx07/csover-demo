@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :support_request do
     user nil
-    title "MyString"
-    message "MyText"
-    closed_at "2017-03-24"
+    sequence :title do |n|
+      "Support request ##{n}"
+    end
+    message 'MyText MyText MyText MyText MyText MyText MyText MyText MyText MyText MyText MyText'
+    closed_at Time.now
   end
 end
