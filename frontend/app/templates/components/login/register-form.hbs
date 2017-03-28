@@ -1,4 +1,7 @@
 {{#bs-form formLayout=formLayout model=this onSubmit=(action "submit") as |form|}}
+  {{#if activeRecordErrors}}
+    {{errors/active-record-errors errors=activeRecordErrors}}
+  {{/if}}
   {{form.element controlType="text" placeholder="Username" property="username" required=true}}
   {{form.element controlType="password" placeholder="Password" property="password" required=true}}
   {{form.element controlType="password" placeholder="Confirm Password" property="passwordConfirmation" required=true}}

@@ -1,0 +1,12 @@
+{{#if isRecaptcha}}
+  <li>Invalid Recaptcha</li>
+{{else}}
+  {{#each-in errors as |field _errors|}}
+    <li>
+      {{field}}:
+      {{#each _errors as |error|}}
+        {{error}}
+      {{/each}}
+    </li>
+  {{/each-in}}
+{{/if}}
