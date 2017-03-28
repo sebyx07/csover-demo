@@ -1,0 +1,18 @@
+{{#bs-navbar fluid=fluid as |navbar|}}
+  <div class="navbar-header">
+    {{#link-to dashboard class="navbar-brand"}}CrossOver{{/link-to}}
+  </div>
+
+  {{#navbar.content}}
+    {{#navbar.nav class="navbar-right" as |nav|}}
+      {{#bs-dropdown tagName="li" as |dd|}}
+        {{#dd.toggle}}{{user.username}} <span class="caret"></span>{{/dd.toggle}}
+        {{#dd.menu as |ddm|}}
+          {{#ddm.item}}
+            <a {{action "logout"}}>Logout</a>
+          {{/ddm.item}}
+        {{/dd.menu}}
+      {{/bs-dropdown}}
+    {{/navbar.nav}}
+  {{/navbar.content}}
+{{/bs-navbar}}
