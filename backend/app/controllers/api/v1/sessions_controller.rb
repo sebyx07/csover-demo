@@ -1,6 +1,7 @@
 module Api::V1
   class SessionsController < Api::V1::BaseControllerController
     before_action :check_logged_in, only: [:current]
+    before_action :check_recaptcha, only: [:login, :register]
 
     def current
       render json: serialize_user(current_user)

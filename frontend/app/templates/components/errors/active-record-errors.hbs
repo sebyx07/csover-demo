@@ -4,9 +4,11 @@
   {{#each-in errors as |field _errors|}}
     <li>
       {{field}}:
-      {{#each _errors as |error|}}
-        {{error}}
-      {{/each}}
+      <ul>
+        {{#each _errors as |error|}}
+          <li>{{error}}</li>
+        {{/each}}
+      </ul>
     </li>
   {{/each-in}}
 {{/if}}

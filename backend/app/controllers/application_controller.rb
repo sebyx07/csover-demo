@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   def check_recaptcha
     unless verify_recaptcha
-      render json: {recaptcha: 'Invalid recaptcha'}, status: 422
+      render json: {recaptcha: ['Code Invalid']}, status: 422
     end
   end
 
