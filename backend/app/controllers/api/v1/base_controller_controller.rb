@@ -5,7 +5,9 @@ module Api::V1
     end
 
     def check_logged_in
-      current_user.present?
+      if current_user.nil?
+        head :not_found
+      end
     end
 
     protected :current_user, :check_logged_in
