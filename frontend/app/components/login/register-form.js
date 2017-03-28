@@ -2,6 +2,9 @@ import Ember from 'ember';
 import EmberValidations, { validator } from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
+  router: Ember.inject.service('-routing'),
+  currentUser: Ember.inject.service(),
+  toastr: Ember.inject.service(),
   classNames: ['login--register-form'],
   disabledBtn: Ember.computed.not('isValid'),
 
@@ -10,8 +13,10 @@ export default Ember.Component.extend(EmberValidations, {
       const params = this.getProperties(['username', 'password']);
       params['g-recaptcha-response'] = this.get('recaptcha');
 
-      Ember.$.post('/api/v1/sessions/register', params).done(() => {
+      Ember.$.post('/api/v1/sessions/register', params).done((data) => {
+        this.get('currentUser').pushUserData(data);
         this.set('activeRecordErrors', undefined);
+        this.get('toastr').transitionTo('customers-dashboard');
         this.get('toastr').succes('Welcome');
       }).fail((error) => {
         this.set('activeRecordErrors', error.responseJSON);
