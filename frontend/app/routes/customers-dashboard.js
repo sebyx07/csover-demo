@@ -17,11 +17,18 @@ export default Ember.Route.extend({
           sort: '-createdAt'
         };
 
+        if(!user.get('isCustomer')){
+          return resolve(this.redirect());
+        }
         resolve({currentUser: user, queryOptions: queryOptions})
       }).catch(() => {
-        this.transitionTo('login');
-        this.get('toastr').error('You must be logged in as a customer');
+        this.redirect();
       });
     });
+  },
+
+  redirect(){
+    this.transitionTo('login');
+    this.get('toastr').error('You must be logged in as a customer');
   }
 });
