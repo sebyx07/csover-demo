@@ -1,15 +1,18 @@
 /*jshint node:true*/
 /* global require, module */
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
+  const app = new EmberApp(defaults, {
     'ember-bootstrap': {
       'bootstrapVersion': 3,
       'importBootstrapFont': true,
       'importBootstrapCSS': false
     }
   });
+
+  app.import('bower_components/toastr/toastr.js');
+  app.import('bower_components/toastr/toastr.css');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

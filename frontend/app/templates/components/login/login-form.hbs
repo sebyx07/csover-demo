@@ -3,7 +3,7 @@
   {{form.element controlType="password" placeholder="Password" property="password" required=true}}
 
   {{#form.group}}
-    {{input/google-recaptcha value=recaptcha}}
+    {{input/google-recaptcha value=recaptcha ref=(mut recaptchaInput)}}
   {{/form.group}}
 
   {{bs-button disabled=disabledBtn defaultText="Login" type="primary" buttonType="submit" block=true}}
