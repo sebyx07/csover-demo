@@ -9,5 +9,15 @@ class ApplicationController < ActionController::Base
     render json: model.errors, status: 422
   end
 
-  protected :check_recaptcha, :render_errors
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def check_logged_in
+    if current_user.nil?
+      head :not_found
+    end
+  end
+
+  protected :check_recaptcha, :render_errors, :current_user, :check_logged_in
 end

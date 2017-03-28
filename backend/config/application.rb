@@ -11,5 +11,7 @@ module Crossover
     %w(services).each do |dir|
       config.autoload_paths << Rails.root.join('app', dir)
     end
+
+    config.assets.prefix = '/backend-assets'
   end
 end
