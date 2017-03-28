@@ -3,15 +3,32 @@ import DataComponent from 'crossover/mixins/data-component';
 
 export default Ember.Component.extend(DataComponent, {
   toastr: Ember.inject.service(),
-  classNames: ['panel panel-default', 'support-requests'],
+  currentUser: Ember.inject.service(),
+  classNames: ['panel panel-default', 'support-requests--list'],
   modelName: 'support-request',
+
+  refresh(){
+    this.set('model', undefined);
+    this.fetchModel();
+  },
 
   actions: {
     deleteRequest(supportRequest){
       supportRequest.destroyRecord().then(() =>{
         this.get('toastr').success('Message has been deleted');
-        this.decrementProperty('recordCount');
+        this.refresh();
       })
+    },
+    newRequests(supportRequest, newComponent){
+      supportRequest.save().then(() => {
+        this.get('toastr').success('Request has been sent');
+        newComponent.setProperties({
+          new: false,
+          message: '',
+          title: ''
+        });
+        this.refresh();
+      });
     }
   }
 });

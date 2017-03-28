@@ -14,7 +14,7 @@ export default Ember.Route.extend({
           filter: {
             'user-id': user.get('id')
           },
-          sort: '-closedAt'
+          sort: '-createdAt'
         };
 
         resolve({currentUser: user, queryOptions: queryOptions})

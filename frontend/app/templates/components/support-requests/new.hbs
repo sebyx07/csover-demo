@@ -1,0 +1,20 @@
+<div class="toggle">
+  {{#unless new}}
+    <button class="btn btn-primary" {{action "new"}}>Send New Support Request</button>
+  {{/unless}}
+</div>
+
+{{#if new}}
+
+  {{#bs-form formLayout=formLayout model=this onSubmit=(action "submit") as |form|}}
+    {{form.element controlType="text" placeholder="Title" property="title" required=true}}
+    {{form.element controlType="textarea" placeholder="Message" property="message" required=true}}
+
+    <div class="actions">
+      <div class="btn-group" role="group" aria-label="...">
+          {{bs-button defaultText="Cancel" type="danger" onClick=(action "cancel")}}
+        {{bs-button disabled=disabledBtn defaultText="Send Request" type="primary" buttonType="submit"}}
+      </div>
+    </div>
+  {{/bs-form}}
+{{/if}}

@@ -1,12 +1,14 @@
 <p class="title" {{action "toggleView"}}>
-  {{supportRequest.title}}
+  {{supportRequest.title}} <em> - {{moment-from-now supportRequest.createdAt}}</em>
 </p>
 
 <div class="status">
   {{#if supportRequest.closedAt}}
     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+     Resolved
   {{else}}
     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+     Not checked yet
   {{/if}}
 </div>
 
