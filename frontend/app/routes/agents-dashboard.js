@@ -11,7 +11,7 @@ export default Ember.Route.extend({
           page: {
             number: 1
           },
-          sort: '-createdAt',
+          sort: '-createdAt,closedAt',
           include: 'user'
         };
 

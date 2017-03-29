@@ -7,6 +7,49 @@ export default Ember.Component.extend(DataComponent, {
   classNames: ['panel panel-default', 'support-requests--list'],
   modelName: 'support-request',
 
+  didInsertElement(){
+    this._super(...arguments);
+    this.watchScroll();
+  },
+
+  watchScroll(){
+    const $ul = this.$('ul.list-group');
+    const tbodyEl = $ul[0];
+
+    $ul.bind('scroll', () => {
+      const currentPosition = $ul.scrollTop() + $ul.innerHeight();
+      const height = tbodyEl.scrollHeight;
+      if(currentPosition >= height && this.get('hasMoreToLoad')){
+        this.send('goToPage', this.get('queryOptions.page.number') + 1);
+      }
+    });
+  },
+
+  hasMoreToLoad: Ember.computed('queryOptions.page.number', 'pageCount', function(){
+    const currentPage = this.get('queryOptions.page.number');
+    const maxPages = this.get('pageCount');
+    console.log(currentPage, maxPages);
+    return currentPage < maxPages;
+  }),
+
+  _setModel(model){
+    const widget = this.get('widget');
+
+    const currentModel = this.get('model');
+    if (currentModel) {
+      model.forEach((record) => {
+        currentModel.pushObject(record._internalModel);
+      });
+    } else {
+      this.set('model', model);
+    }
+    this.setProperties({
+      loaded: true,
+      pageCount: model.meta['page-count'],
+      recordCount: model.meta['record-count']
+    });
+  },
+
   refresh(){
     this.set('model', undefined);
     this.fetchModel();
@@ -16,7 +59,7 @@ export default Ember.Component.extend(DataComponent, {
     deleteRequest(supportRequest){
       supportRequest.destroyRecord().then(() =>{
         this.get('toastr').success('Message has been deleted');
-        this.refresh();
+        this.decrementProperty('recordCount');
       })
     },
     newRequests(supportRequest, newComponent){
@@ -35,7 +78,6 @@ export default Ember.Component.extend(DataComponent, {
       supportRequest.set('closedAt', new Date());
       supportRequest.save().then(() => {
         this.get('toastr').success('Request has been resolved');
-        this.refresh();
       });
     }
   }

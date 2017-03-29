@@ -6,9 +6,11 @@
     </div>
     <div class="panel-body">
       {{support-requests/new list=list}}
-      {{#each list.model as |sr|}}
-        {{support-requests/list-item-customer list=list supportRequest=sr}}
-      {{/each}}
+      <ul class="list-group">
+        {{#each list.model as |sr|}}
+          {{support-requests/list-item-customer list=list supportRequest=sr}}
+        {{/each}}
+      </ul>
     </div>
   {{/support-requests/list}}
 </div>

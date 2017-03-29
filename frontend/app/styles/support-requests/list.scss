@@ -1,4 +1,8 @@
 .support-requests--list{
+  ul.list-group{
+    max-height: 40em;
+    overflow:auto;
+  }
   .new{
     text-align: right;
     margin-bottom: 1em;
