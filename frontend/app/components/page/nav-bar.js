@@ -8,7 +8,7 @@ export default Ember.Component.extend({
     logout(){
       Ember.$.post('/api/v1/sessions/logout').then(() => {
         this.get('router').transitionTo('login');
-        this.get('toastr').success('Logged Out!')
+        this.get('toastr').success('Logged Out!');
       });
     }
   }

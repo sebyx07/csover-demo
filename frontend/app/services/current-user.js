@@ -4,8 +4,6 @@ export default Ember.Service.extend({
   store: Ember.inject.service(),
 
   getUser(){
-    const store = this.get('store');
-
     return new Ember.RSVP.Promise((resolve, reject) => {
       if (this.get('user')) {
         return resolve(this.get('user'));

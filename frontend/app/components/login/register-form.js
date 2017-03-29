@@ -45,7 +45,7 @@ export default Ember.Component.extend(EmberValidations, {
           passwordConfirmation = this.get('passwordConfirmation');
 
         if(!passwordConfirmation || passwordConfirmation !== password){
-          return "Passwords don't match"
+          return "Passwords don't match";
         }
       })
     },

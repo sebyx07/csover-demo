@@ -7,7 +7,7 @@ export default Ember.Component.extend({
       this.toggleProperty('showDetails');
     },
     delete(){
-      this.get('list').send('deleteRequest', this.get('supportRequest'))
+      this.get('list').send('deleteRequest', this.get('supportRequest'));
     }
   }
 });

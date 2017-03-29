@@ -33,8 +33,6 @@ export default Ember.Component.extend(DataComponent, {
   }),
 
   _setModel(model){
-    const widget = this.get('widget');
-
     const currentModel = this.get('model');
     if (currentModel) {
       model.forEach((record) => {
@@ -60,7 +58,7 @@ export default Ember.Component.extend(DataComponent, {
       supportRequest.destroyRecord().then(() =>{
         this.get('toastr').success('Request has been deleted');
         this.decrementProperty('recordCount');
-      })
+      });
     },
     newRequests(supportRequest, newComponent){
       supportRequest.save().then(() => {

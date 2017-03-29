@@ -10,6 +10,6 @@ describe('Unit | Route | application', function() {
 
   it('exists', function() {
     let route = this.subject();
-    expect(route).to.be.ok;
+    return expect(route).to.be.ok;
   });
 });

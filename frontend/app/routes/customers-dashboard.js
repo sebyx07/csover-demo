@@ -17,7 +17,7 @@ export default Ember.Route.extend({
           sort: '-createdAt,closedAt'
         };
 
-        resolve({currentUser: user, queryOptions: queryOptions})
+        resolve({currentUser: user, queryOptions: queryOptions});
       }).catch(() => {
         this.transitionTo('login');
         this.get('toastr').error('You must be logged in as a customer');

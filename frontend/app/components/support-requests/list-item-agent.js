@@ -7,7 +7,7 @@ export default Ember.Component.extend({
       this.toggleProperty('showDetails');
     },
     resolve(){
-      this.get('list').send('resolveRequest', this.get('supportRequest'))
+      this.get('list').send('resolveRequest', this.get('supportRequest'));
     }
   }
 });

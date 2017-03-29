@@ -11,6 +11,6 @@ describe('Unit | Service | current user', function() {
   // Replace this with your real tests.
   it('exists', function() {
     let service = this.subject();
-    expect(service).to.be.ok;
+    return expect(service).to.be.ok;
   });
 });

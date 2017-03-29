@@ -12,6 +12,6 @@ describe('Unit | Model | support request', function() {
   it('exists', function() {
     let model = this.subject();
     // var store = this.store();
-    expect(model).to.be.ok;
+    return expect(model).to.be.ok;
   });
 });

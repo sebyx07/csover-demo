@@ -23,7 +23,7 @@ export default Ember.Component.extend(EmberValidations, {
           password: '',
           recaptcha: undefined
         });
-      })
+      });
     }
   },
 
