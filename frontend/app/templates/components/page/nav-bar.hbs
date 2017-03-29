@@ -9,7 +9,7 @@
         {{#dd.toggle}}{{user.username}} <span class="caret"></span>{{/dd.toggle}}
         {{#dd.menu as |ddm|}}
           {{#ddm.item}}
-            <a {{action "logout"}}>Logout</a>
+            <a href="#" {{action "logout"}}>Logout</a>
           {{/ddm.item}}
         {{/dd.menu}}
       {{/bs-dropdown}}

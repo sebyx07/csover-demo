@@ -58,7 +58,7 @@ export default Ember.Component.extend(DataComponent, {
   actions: {
     deleteRequest(supportRequest){
       supportRequest.destroyRecord().then(() =>{
-        this.get('toastr').success('Message has been deleted');
+        this.get('toastr').success('Request has been deleted');
         this.decrementProperty('recordCount');
       })
     },
