@@ -4,7 +4,7 @@ Setup:
 
 ```shell
 docker-compose build
-docker-compose run backend rails db:reset
+docker-compose run backend rails db:create && rails db:migrate
 docker-compose run frontend npm i && bower i --allow-root
 ```
 
