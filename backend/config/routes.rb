@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: redirect('/login')
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :api do
     namespace :v1 do

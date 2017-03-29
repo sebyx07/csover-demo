@@ -16,7 +16,7 @@ RSpec.describe RailsAdmin::MainController, type: :controller do
       it 'redirects to login' do
         ctrl = klass.new
         ctrl.expects(:current_user).returns nil
-        ctrl.expects(:redirect_to).with('/login')
+        ctrl.expects(:redirect_to).with('/')
         ctrl.send(:check_logged_in)
       end
     end
