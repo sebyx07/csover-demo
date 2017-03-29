@@ -34,6 +34,6 @@ mysql:
   ports:
     - "3306:3306"
   volumes:
-    - ./db:/var/lib/mysql
+    - ./db_mysql:/var/lib/mysql
   environment:
     - MYSQL_ALLOW_EMPTY_PASSWORD=yes
