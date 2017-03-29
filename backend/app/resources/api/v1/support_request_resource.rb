@@ -4,11 +4,16 @@ module Api::V1
 
     has_one :user
 
-    filter :user_id, apply: ->(records, value, _options) {
-      id = value[0]
-      user = _options[:context][:current_user]
-      puts user
-      records
-    }
+    def self.records(options = {})
+      current_user = options[:context][:current_user]
+
+      if current_user.customer?
+        current_user.support_requests
+      else
+        SupportRequest
+      end
+    end
+
+    filter :user_id
   end
 end

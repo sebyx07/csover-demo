@@ -16,7 +16,7 @@ export default Ember.Component.extend(EmberValidations, {
       Ember.$.post('/api/v1/sessions/register', params).done((data) => {
         this.get('currentUser').pushUserData(data);
         this.set('activeRecordErrors', undefined);
-        this.get('toastr').transitionTo('customers-dashboard');
+        this.get('router').transitionTo('customers-dashboard');
         this.get('toastr').succes('Welcome');
       }).fail((error) => {
         this.set('activeRecordErrors', error.responseJSON);
