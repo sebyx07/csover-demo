@@ -5,8 +5,8 @@ module RailsAdmin
     end
 
     def check_logged_in
-      if current_user.nil? && current_user.admin?
-        redirect_to '/login/'
+      if current_user.nil? || !current_user.admin?
+        redirect_to '/login'
       end
     end
   end

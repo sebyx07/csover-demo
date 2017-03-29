@@ -10,8 +10,4 @@ class SupportRequest < ApplicationRecord
   validates :message, presence: true, length: {
       maximum: 10000, minimum: 40
   }
-
-  def closed?
-    self.closed_at.present?
-  end
 end
