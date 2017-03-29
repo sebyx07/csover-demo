@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <body>
+    <h3 style="text-align: center"><%@requests.size %> Requests Closed Since <%= 1.month.ago.strftime('%B %d %Y') %></h3>
+    <% @requests.each_with_index do |req, index| %>
+      <div>
+        <p><%= index + 1 %>) <%= req.title %> - From: <%= req.user.username %> - Closed At - <%= req.closed_at %></p>
+
+        <p>
+          <%= req.message %>
+        </p>
+      </div>
+      <hr />
+    <% end %>
+  </body>
+</html>

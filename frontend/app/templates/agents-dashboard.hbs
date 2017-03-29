@@ -5,6 +5,7 @@
       {{list.recordCount}} Support requests
     </div>
     <div class="panel-body">
+      {{support-requests/generate-report-agent}}
       {{#each list.model as |sr|}}
         {{support-requests/list-item-agent list=list supportRequest=sr}}
       {{/each}}
