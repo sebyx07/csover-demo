@@ -5,22 +5,29 @@
 <div class="status">
   {{#if supportRequest.closedAt}}
     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-     Resolved
+    Resolved
   {{else}}
     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-     Not checked yet
+    Not checked yet
   {{/if}}
 </div>
 
 {{#if showDetails}}
   <div class="content">
+    <div class="from">
+      From - <b>{{supportRequest.user.username}}</b>
+    </div>
+
     <hr />
+
     <div class="message">
       {{supportRequest.message}}
     </div>
 
-    <div class="actions">
-      <button type="button" class="btn btn-danger" {{action "delete"}}>Delete</button>
-    </div>
+    {{#unless supportRequest.closedAt}}
+      <div class="actions">
+        <button type="button" class="btn btn-primary" {{action "resolve"}}>Resolve</button>
+      </div>
+    {{/unless}}
   </div>
 {{/if}}

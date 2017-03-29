@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  supportRequests: DS.hasMany('support-request'),
   username: DS.attr('string'),
   role: DS.attr('string'),
 

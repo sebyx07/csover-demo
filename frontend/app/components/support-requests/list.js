@@ -29,6 +29,14 @@ export default Ember.Component.extend(DataComponent, {
         });
         this.refresh();
       });
+    },
+
+    resolveRequest(supportRequest){
+      supportRequest.set('closedAt', new Date());
+      supportRequest.save().then(() => {
+        this.get('toastr').success('Request has been resolved');
+        this.refresh();
+      });
     }
   }
 });
