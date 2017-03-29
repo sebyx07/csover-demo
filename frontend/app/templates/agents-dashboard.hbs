@@ -1,1 +1,14 @@
-{{outlet}}
+{{page/nav-bar dashboard="customers-dashboard" user=model.currentUser}}
+<div class="container">
+  {{#support-requests/list queryOptions=model.queryOptions as |list|}}
+    <div class="panel-heading">
+      {{list.recordCount}} Support requests
+    </div>
+    <div class="panel-body">
+      {{support-requests/new list=list}}
+      {{#each list.model as |sr|}}
+        {{support-requests/list-item-customer list=list supportRequest=sr}}
+      {{/each}}
+    </div>
+  {{/support-requests/list}}
+</div>

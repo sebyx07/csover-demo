@@ -13,18 +13,12 @@ export default Ember.Route.extend({
           },
           sort: '-createdAt'
         };
-        if(!user.get('isAgent')){
-          return resolve(this.redirect());
-        }
+
         resolve({currentUser: user, queryOptions: queryOptions})
       }).catch(() => {
-        this.redirect();
+        this.transitionTo('login');
+        this.get('toastr').error('You must be logged in as a agent');
       });
     });
-  },
-
-  redirect(){
-    this.transitionTo('login');
-    this.get('toastr').error('You must be logged in as a agent');
   }
 });
