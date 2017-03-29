@@ -14,4 +14,15 @@ describe('Unit | Model | user', function() {
     // var store = this.store();
     return expect(model).to.be.ok;
   });
+
+  ['Customer', 'Agent', 'Admin'].forEach((role) => {
+    const propertyName = `is${role}`;
+
+    describe(propertyName, function () {
+      it('checks if it is role', function () {
+        const model = this.subject({role: role.toLowerCase()});
+        return expect(model.get(propertyName)).to.be.true;
+      });
+    });
+  });
 });

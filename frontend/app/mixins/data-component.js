@@ -31,7 +31,6 @@ export default Ember.Mixin.create({
   },
 
   fetchModel(){
-    this._beforeRequest();
     this.makeRequest().then((model) => {
       this._setModel(model);
     });
@@ -65,31 +64,14 @@ export default Ember.Mixin.create({
     });
   },
 
-  _beforeRequest(){
-    const widget = this.get('widget');
-    if(widget){
-      widget.send('loading');
-      this.set('loaded', false);
-    }
-  },
-
   _setModel(model){
-    const widget = this.get('widget');
     this.setProperties({
       model: model,
       loaded: true,
       pageCount: model.meta['page-count'],
       recordCount: model.meta['record-count']
     });
-    if(widget){
-      widget.send('doneLoading');
-    }
   },
-
-  reloadModel: Ember.observer('widget.refresh', function () {
-    this.set('model', undefined);
-    this.fetchModel();
-  }),
 
   /* jshint ignore:start */
   _updateSearch(searchResult){
@@ -121,18 +103,6 @@ export default Ember.Mixin.create({
     this.set('queryOptions.filter', filter);
   },
   /* jshint ignore:end */
-
-  searchPlaceholder: Ember.computed('modelFields', function () {
-    const modelFields = this.get('modelFields');
-    let placeholder = '';
-    modelFields.forEach((field) => {
-      if(field.search){
-        placeholder += field.displayValue + ', ';
-      }
-    });
-
-    return placeholder.substring(0, placeholder.length - 2);
-  }),
 
   actions: {
     goToPage(page){
